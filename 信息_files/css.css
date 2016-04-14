@@ -1,0 +1,50 @@
+.font{ color:#000000;font-size: 9pt;line-height: 14pt}
+ .w{ font-size: 9pt;line-height: 14pt; text-decoration: none;color:#ffffff}
+ .p{ font-size: 9pt; line-height: 14pt; text-decoration: none;color:#000099}
+ .b{ font-size: 9pt; line-height: 14pt; text-decoration: none;color:blue}
+ .r{ font-size: 9pt; line-height: 14pt; text-decoration: none; color:red}
+ .y{ font-size: 9pt; line-height: 14pt; text-decoration: none; color:yellow}
+ 
+.STYLE6{font-size: 24px;font-family: Arial, Helvetica, sans-serif;font-weight: bold;}
+.STYLE9{font-family: "ËÎÌו"; font-size: 14px;}
+.STYLE11{font-size: 11pt;font-family: "ËÎÌו";font-weight: bold;}
+.STYLE13{font-size: 13px}
+.STYLE15{font-size: 13px; font-weight: bold; }
+.style16 {color: #ff0000; font-size: 22px; font-weight: bold;}
+
+
+a.menu{ color:blue;font-size:9pt;text-decoration:none } 
+a.menu:hover{ color:#000000;font-size:9pt;text-decoration:none }
+a.mok{ color:#ffffff;font-size:9pt;text-decoration:none } 
+a.mok:hover{ color:#ffffff;font-size:9pt;text-decoration:underline}
+a.mok_s2{ color:#000099;font-size:9pt;text-decoration:none } 
+a.mok_s2:hover{ color:#000099;font-size:9pt;text-decoration:underline}
+a.person{ color:blue;font-size:9pt;text-decoration:none } 
+a.person:hover{ color:blue;font-size:9pt;text-decoration:underline }
+.txt {
+	BACKGROUND-COLOR: #F2EAE3;BORDER-RIGHT: #333333 1px solid; PADDING-RIGHT: 1px; BORDER-TOP: #333333 1px solid; PADDING-LEFT: 1px; FONT-SIZE: 9pt; PADDING-BOTTOM: 1px; BORDER-LEFT: #333333 1px solid; CURSOR: text; COLOR: #333333; PADDING-TOP: 1px; BORDER-BOTTOM: #333333 1px solid; HEIGHT: 18px
+}
+.txt1 {
+	BACKGROUND-COLOR: #ffffcc;BORDER-RIGHT: #333333 1px solid; PADDING-RIGHT: 1px; BORDER-TOP: #333333 1px solid; PADDING-LEFT: 1px; FONT-SIZE: 9pt; PADDING-BOTTOM: 1px; BORDER-LEFT: #333333 1px solid; CURSOR: text; COLOR: #333333; PADDING-TOP: 1px; BORDER-BOTTOM: #333333 1px solid; HEIGHT: 18px
+}
+.txt2 {
+	BACKGROUND-COLOR: #F2EAE3;BORDER-RIGHT: #333333 1px solid; PADDING-RIGHT: 1px; BORDER-TOP: #333333 1px solid; PADDING-LEFT: 1px; FONT-SIZE: 9pt; PADDING-BOTTOM: 1px; BORDER-LEFT: #333333 1px solid; CURSOR: text; COLOR: #333333; PADDING-TOP: 1px; BORDER-BOTTOM: #333333 1px solid;
+}
+.txt3 {
+	BACKGROUND-COLOR: #F2EAE3;BORDER-RIGHT: #333333 1px solid; PADDING-RIGHT: 1px; BORDER-TOP: #333333 1px solid; PADDING-LEFT: 1px; FONT-SIZE: 9pt; PADDING-BOTTOM: 1px; BORDER-LEFT: #333333 1px solid; CURSOR: text; COLOR: #333333; PADDING-TOP: 1px; BORDER-BOTTOM: #333333 1px solid;
+}
+.btn1 {
+	BORDER-RIGHT: #333333 1px solid; PADDING-RIGHT: 1px; BORDER-TOP: #333333 1px solid; PADDING-LEFT: 1px; FONT-SIZE: 9pt; BACKGROUND: #f2f2f2; PADDING-BOTTOM: 1px; BORDER-LEFT: #333333 1px solid; CURSOR: hand; COLOR: #333333; PADDING-TOP: 1px; BORDER-BOTTOM: #333333 1px solid;HEIGHT: 18px;width:50px
+}
+.sel{
+BACKGROUND-COLOR: #ffffcc; BORDER-BOTTOM: 1px double; BORDER-LEFT: 1px double; BORDER-RIGHT: 1px double; BORDER-TOP: 1px double; COLOR: #000000
+}
+.BODY {
+	SCROLLBAR-FACE-COLOR: #f3f3f3; FONT-SIZE: 9pt; SCROLLBAR-HIGHLIGHT-COLOR: #ffffff; SCROLLBAR-SHADOW-COLOR: #ffffff; COLOR: #000000; SCROLLBAR-3DLIGHT-COLOR: #999999; SCROLLBAR-ARROW-COLOR: #999999; SCROLLBAR-TRACK-COLOR: #ffffff; FONT-FAMILY: "ËÎÌו"; SCROLLBAR-DARKSHADOW-COLOR: #999999; TEXT-DECORATION: none
+}
+BODY {
+	SCROLLBAR-FACE-COLOR: #eeeaeb; FONT-SIZE: 12px; SCROLLBAR-HIGHLIGHT-COLOR: #fbfdfc; SCROLLBAR-SHADOW-COLOR: #170708; SCROLLBAR-3DLIGHT-COLOR: #170708; LINE-HEIGHT: 18px; SCROLLBAR-ARROW-COLOR: #000000; SCROLLBAR-DARKSHADOW-COLOR: #ffffff; SCROLLBAR-BASE-COLOR: #170708
+}
+.STYLE10 {
+	font-size: 18px;
+}
