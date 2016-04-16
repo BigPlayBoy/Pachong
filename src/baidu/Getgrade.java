@@ -2,45 +2,43 @@ package baidu;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.InetSocketAddress;
-import java.net.Proxy;
-import java.net.URI;
+
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.List;
-import java.util.Map;
+import java.util.Date;
 import java.util.Stack;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.quartz.Job;
+import org.quartz.JobExecutionContext;
+import org.quartz.JobExecutionException;
+import org.quartz.JobKey;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import post.HttpRequest;
+public class Getgrade implements Job {
+	private static Logger _log = LoggerFactory.getLogger(Getgrade.class);
 
-public class Getgrade {
 	public static void main(String[] args) {
-		//第一步从数据中获取学号和密码，返回值类型是Stack<IdAndPasswd>
-		Stack<IdAndPasswd> passwd=Tools.getStuIdandPasswd();//得到学号和密码
+		// 第一步从数据中获取学号和密码，返回值类型是Stack<IdAndPasswd>
+		Stack<IdAndPasswd> passwd = Tools.getStuIdandPasswd();// 得到学号和密码
 		System.out.println("获取学号和密码成功");
-		while(!passwd.isEmpty()){
-			String xuehao=passwd.peek().getStuId();
-			String upass=passwd.peek().getPassswd();
+		while (!passwd.isEmpty()) {
+			String xuehao = passwd.peek().getStuId();
+			String upass = passwd.peek().getPassswd();
 			passwd.pop();
-			//获取成绩页面
+			// 获取成绩页面
 			System.out.println("获取网页信息");
-			String GradePage=getGradePage(xuehao,upass);
-			//拿到成绩页面，提取出学生信息和成绩			
+			String GradePage = getGradePage(xuehao, upass);
+			// 拿到成绩页面，提取出学生信息和成绩
 			System.out.println("已获取网页信息，正获取学生信息");
-			//System.out.println("获取的网页为："+GradePage);
-			Student student=Tools.getStuInfo(GradePage);
-			//存入数据库
-			//System.out.println(student);
+			// System.out.println("获取的网页为："+GradePage);
+			Student student = Tools.getStuInfo(GradePage);
+			// 存入数据库
+			// System.out.println(student);
 			System.out.println("存入数据库");
-			SQLTools.saveStudent(student);//已经考虑是否有重复了
+			SQLTools.saveStudent(student);// 已经考虑是否有重复了
 		}
 	}
 
@@ -56,14 +54,14 @@ public class Getgrade {
 		String cookie = GetCookie("http://jw.tjnu.edu.cn/").replace("; path=/", "");
 		// System.out.println("拿到的cookie为：" + cookie);
 		// System.out.println("\n正在登录...\n");
-		//xuehao = "1330090005";
-		//upass = "rzy003502";
+		// xuehao = "1330090005";
+		// upass = "rzy003502";
 		String postInfo = "uname=" + xuehao + "&upass=" + upass + "&submitgo=GO";
-		//System.out.println("拼接的登陆信息为："+postInfo);
+		// System.out.println("拼接的登陆信息为："+postInfo);
 		sendPost("http://jw.tjnu.edu.cn/index.php", postInfo, cookie);
 		// 进入成绩页面
 		String gradePage = sendGet("http://jw.tjnu.edu.cn/jwgl/cjgl/bbdy/bottom.php?id=&page=", cookie);
-		
+
 		// System.out.println("打印成绩页面");
 		// System.out.println(Tools.getStuInfo(grade));// 将提取的信息打印出来
 		// System.out.println(grade);// 获得了成绩页面
@@ -218,8 +216,8 @@ public class Getgrade {
 			in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
 			String line;
 			// 这里成功拿到cookie
-			String head = conn.getHeaderField("Set-Cookie");
-			//System.out.println("返回的Cookie is \n\t" + head);
+			//String head = conn.getHeaderField("Set-Cookie");
+			// System.out.println("返回的Cookie is \n\t" + head);
 			while ((line = in.readLine()) != null) {
 				result += line;
 			}
@@ -250,7 +248,7 @@ public class Getgrade {
 		try {
 			// String urlNameString = url + "?" + param;
 			String urlNameString = url;
-			Proxy proxy = new Proxy(java.net.Proxy.Type.HTTP, new InetSocketAddress("127.0.0.1", 8888));
+			//Proxy proxy = new Proxy(java.net.Proxy.Type.HTTP, new InetSocketAddress("127.0.0.1", 8888));
 			URL realUrl = new URL(urlNameString);
 			// 打开和URL之间的连接
 			URLConnection connection = realUrl.openConnection();
@@ -275,7 +273,7 @@ public class Getgrade {
 			// for (String key : map.keySet()) {
 			// System.out.println(key + "--->" + map.get(key));
 			// }
-			String status = connection.getHeaderField("");
+			//String status = connection.getHeaderField("");
 			// 定义 BufferedReader输入流来读取URL的响应
 			in = new BufferedReader(new InputStreamReader(connection.getInputStream(), "gb2312"));
 			// in = new BufferedReader(new InputStreamReader((InputStream)
@@ -299,6 +297,32 @@ public class Getgrade {
 			}
 		}
 		return result;
+	}
+
+	@Override
+	public void execute(JobExecutionContext context) throws JobExecutionException {
+		// TODO Auto-generated method stub
+		JobKey jobKey = context.getJobDetail().getKey();
+		// 第一步从数据中获取学号和密码，返回值类型是Stack<IdAndPasswd>
+		Stack<IdAndPasswd> passwd = Tools.getStuIdandPasswd();// 得到学号和密码
+		_log.info("获取学号和密码成功");
+		_log.info("SimpleJob says: " + jobKey + " executing at " + new Date());
+		while (!passwd.isEmpty()) {
+			String xuehao = passwd.peek().getStuId();
+			String upass = passwd.peek().getPassswd();
+			passwd.pop();
+			// 获取成绩页面
+			_log.info("获取网页信息");
+			String GradePage = getGradePage(xuehao, upass);
+			// 拿到成绩页面，提取出学生信息和成绩
+			_log.info("已获取网页信息，正获取学生信息");
+			// System.out.println("获取的网页为："+GradePage);
+			Student student = Tools.getStuInfo(GradePage);
+			// 存入数据库
+			// System.out.println(student);
+			_log.info("存入数据库");
+			SQLTools.saveStudent(student);// 已经考虑是否有重复了
+		}
 	}
 
 }
