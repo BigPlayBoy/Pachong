@@ -1,7 +1,8 @@
 /baidu/
-/c3p0-config.xml
 /c3p0.properties
 /c3po/
 /log4j.properties
 /post/
 /quartz/
+/sina/
+/test/
